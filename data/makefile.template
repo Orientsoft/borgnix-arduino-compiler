@@ -1,0 +1,5 @@
+ARDUINO_DIR = {arduinoDir}
+ARDMK_DIR = {arduinoMkDir}
+BOARD_TAG = {board}
+LIBS = {libs}
+include {arduinoMakefile}
