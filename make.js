@@ -3,13 +3,19 @@ var fs = require('fs-extra')
   , format = require('string-template')
   , butil = require('./lib/util')
 
-function ArduinoCompiler (configFile) {
-  try {
-    _.extend(this, fs.readJsonSync(configFile))
-  }
-  catch (e) {
-    console.error(e)
-  }
+function ArduinoCompiler (config) {
+  if (config.arduinoDir)
+    this.arduinoDir = config.arduinoDir
+  else
+    throw new Error('config.arduinoDir is missing')
+
+  if (config.arduinoMkDir)
+    this.arduinoMkDir = config.arduinoMkDir
+  else
+    throw new Error('config.arduinoMkDir is missing')
+
+  this.makefile = this.arduinoMkDir + '/Arduino.mk'
+  this.tplFile = path.join(__dirname, 'data', 'makefile.template')
 }
 
 ArduinoCompiler.prototype.compile = function (sketch, board, cb) {

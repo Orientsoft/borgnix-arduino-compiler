@@ -8,18 +8,13 @@ var router = require('express').Router()
   , unzip = require('unzip')
   , _ = require('underscore')
 
-var compiler = new ArduinoCompiler()
+var compiler
   , bpm
 
-compiler.arduinoDir = '/Applications/Arduino.app/Contents/Java'
-compiler.arduinoMkDir = '/usr/local/Cellar/arduino-mk/1.5'
-compiler.makefile = compiler.arduinoMkDir + '/Arduino.mk'
-compiler.tplFile = path.join(__dirname, 'data', 'makefile.template')
-
 router.post('/compile', function (req, res) {
-  console.log(req.body)
+  // console.log(req.body)
   var sketch = bpm.findProject(req.body.uuid, req.body.type, req.body.name)
-  console.log(sketch)
+  // console.log(sketch)
   if (!sketch)
     return res.json({status: 1, content: 'sketch not found'})
   compiler.compile(sketch, req.body.board, function (err, stdout, stderr) {
@@ -61,7 +56,7 @@ router.get('/findhex', function (req, res) {
 router.post('/upload-zip-lib', function (req, res) {
   console.log(req.query.uuid, req.query.token)
   _.map(req.files, function (file, key) {
-    console.log(file)
+    // console.log(file)
     if (file.extension !== 'zip') return null
     var outPath = path.join(bpm.root, req.query.uuid, 'arduino/libraries'
                            , path.basename( file.originalname
@@ -81,9 +76,9 @@ router.get('/libs', function (req, res) {
     var userLibs = getLibs(userLibPath, 'user')
     var ideLibs = getLibs(ideLibPath, 'ide')
     var avrLibs = getLibs(avrLibPath, 'ide')
-    console.log(userLibs)
-    console.log(ideLibs)
-    console.log(avrLibs)
+    // console.log(userLibs)
+    // console.log(ideLibs)
+    // console.log(avrLibs)
     res.json({status: 0, content:{
       userLibs: userLibs
     , ideLibs: ideLibs.concat(avrLibs)
@@ -137,8 +132,6 @@ function getLibs (libPath, type) {
           throw new Error('walking error')
         }
       , end: function () {
-          // console.log(lib)
-          // lib.headers = JSON.stringify(lib.headers)
           libs.push(lib)
         }
       }
@@ -146,11 +139,24 @@ function getLibs (libPath, type) {
     var walker = walk.walkSync(fullPath, opt)
 
   })
-  console.log(libs)
   return libs
 }
 
-module.exports = function (root) {
-  bpm = new BPM(root)
+module.exports = function (config) {
+  var opt = {}
+  if (config.projectRoot)
+    opt.root = config.projectRoot
+  else
+    throw new Error('config.projectRoot is missing')
+
+  if (config.arduinoLibs)
+    opt.arduinoLibs = config.arduinoLibs
+  else
+    throw new Error('config.arduinoLibs is missing')
+
+  bpm = new BPM(opt)
+
+  compiler = new ArduinoCompiler(config)
+
   return router
 }
