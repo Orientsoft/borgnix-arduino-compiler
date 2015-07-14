@@ -1,5 +1,5 @@
 ARDUINO_DIR = {arduinoDir}
 ARDMK_DIR = {arduinoMkDir}
+ARDUINO_SKETCHBOOK = {sketchbook}
 BOARD_TAG = {board}
-LIBS = {libs}
 include {arduinoMakefile}

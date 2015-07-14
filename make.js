@@ -19,7 +19,8 @@ ArduinoCompiler.prototype.compile = function (sketch, board, cb) {
                                 , arduinoMkDir: this.arduinoMkDir
                                 , arduinoDir: this.arduinoDir
                                 , arduinoMakefile: this.makefile
-                                , libs: sketch.libs ? sketch.libs.join(' ') : ''
+                                // , libs: sketch.libs ? sketch.libs.join(' ') : ''
+                                , sketchbook: path.join(sketch.dir, '..')
                                 }))
   var cmd = ['make']
   butil.exec(cmd, {cwd: sketch.dir}, cb)
