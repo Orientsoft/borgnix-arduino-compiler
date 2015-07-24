@@ -1,5 +1,7 @@
-import $ from 'jquery'
-import _ from 'underscore'
+// import $ from 'jquery'
+// import _ from 'underscore'
+var $ = require('jquery')
+  , _ = require('underscore')
 
 var Client = function (opt) {
   this.host = opt.host || ''
@@ -10,6 +12,7 @@ var Client = function (opt) {
   , uploadZipLib: '/upload-zip-lib'
   , getHex: '/hex'
   , findHex: '/findhex'
+  , getBoards: '/boards'
   }
 }
 
@@ -25,6 +28,14 @@ Client.prototype.listLibs = function (uuid, cb) {
       uuid: uuid
     }
   , success: cb
+  })
+}
+
+Client.prototype.getBoards = function (cb) {
+  console.log('inside getBoards', this.url('getBoards'))
+  $.get(this.url('getBoards'), function (data) {
+    console.log(data)
+    cb(data)
   })
 }
 
@@ -78,4 +89,5 @@ Client.prototype.method = function (uuid) {
 
 }
 
-export default Client
+// export default Client
+module.exports = Client

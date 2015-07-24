@@ -2,7 +2,7 @@ var router = require('express').Router()
   , ArduinoCompiler = require('./make')
   , BPM = require('borgnix-project-manager')
   , path = require('path')
-  , boards = require('./lib/board')
+  // , boards = require('./lib/board')
   , fs = require('fs-extra')
   , walk = require('walk')
   , unzip = require('unzip')
@@ -10,6 +10,7 @@ var router = require('express').Router()
 
 var compiler
   , bpm
+  , boards = require('./data/boards.json')
 
 router.post('/compile', function (req, res) {
   // console.log(req.body)
@@ -27,7 +28,8 @@ router.post('/compile', function (req, res) {
 })
 
 router.get('/boards', function (req, res) {
-  res.json(Object.keys(boards.data()))
+  // res.json(Object.keys(boards.data()))
+  res.json(boards)
 })
 
 router.get('/hex/:filename', function (req, res) {

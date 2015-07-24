@@ -1,0 +1,956 @@
+{
+  "yun": {
+    "name": "Arduino Yún",
+    "upload": {
+      "via_ssh": "true",
+      "tool": "avrdude",
+      "protocol": "avr109",
+      "maximum_size": "28672",
+      "maximum_data_size": "2560",
+      "speed": "57600",
+      "disable_flushing": "true",
+      "use_1200bps_touch": "true",
+      "wait_for_upload_port": "true"
+    },
+    "vid": [
+      "0x2341",
+      "0x2341",
+      "0x2A03",
+      "0x2A03"
+    ],
+    "pid": [
+      "0x0041",
+      "0x8041",
+      "0x0041",
+      "0x8041"
+    ],
+    "bootloader": {
+      "tool": "avrdude",
+      "low_fuses": "0xff",
+      "high_fuses": "0xd8",
+      "extended_fuses": "0xfb",
+      "file": "caterina/Caterina-Yun.hex",
+      "unlock_bits": "0x3F",
+      "lock_bits": "0x2F"
+    },
+    "build": {
+      "mcu": "atmega32u4",
+      "f_cpu": "16000000L",
+      "vid": "0x2341",
+      "pid": "0x8041",
+      "usb_product": "\"Arduino Yun\"",
+      "board": "AVR_YUN",
+      "core": "arduino",
+      "variant": "yun",
+      "extra_flags": "{build.usb_flags}"
+    },
+    "signature": "1e9587"
+  },
+  "uno": {
+    "name": "Arduino Uno",
+    "vid": [
+      "0x2341",
+      "0x2341",
+      "0x2A03"
+    ],
+    "pid": [
+      "0x0043",
+      "0x0001",
+      "0x0043"
+    ],
+    "upload": {
+      "tool": "avrdude",
+      "protocol": "arduino",
+      "maximum_size": "32256",
+      "maximum_data_size": "2048",
+      "speed": "115200"
+    },
+    "bootloader": {
+      "tool": "avrdude",
+      "low_fuses": "0xFF",
+      "high_fuses": "0xDE",
+      "extended_fuses": "0x05",
+      "unlock_bits": "0x3F",
+      "lock_bits": "0x0F",
+      "file": "optiboot/optiboot_atmega328.hex"
+    },
+    "build": {
+      "mcu": "atmega328p",
+      "f_cpu": "16000000L",
+      "board": "AVR_UNO",
+      "core": "arduino",
+      "variant": "standard"
+    },
+    "signature": "1e950f"
+  },
+  "diecimila": {
+    "name": "Arduino Duemilanove or Diecimila",
+    "upload": {
+      "tool": "avrdude",
+      "protocol": "arduino"
+    },
+    "bootloader": {
+      "tool": "avrdude",
+      "low_fuses": "0xFF",
+      "unlock_bits": "0x3F",
+      "lock_bits": "0x0F"
+    },
+    "build": {
+      "f_cpu": "16000000L",
+      "board": "AVR_DUEMILANOVE",
+      "core": "arduino",
+      "variant": "standard"
+    },
+    "menu": {
+      "cpu": {
+        "atmega328": {
+          "upload": {
+            "maximum_size": "30720",
+            "maximum_data_size": "2048",
+            "speed": "57600"
+          },
+          "bootloader": {
+            "high_fuses": "0xDA",
+            "extended_fuses": "0x05",
+            "file": "atmega/ATmegaBOOT_168_atmega328.hex"
+          },
+          "build": {
+            "mcu": "atmega328p"
+          }
+        },
+        "atmega168": {
+          "upload": {
+            "maximum_size": "14336",
+            "maximum_data_size": "1024",
+            "speed": "19200"
+          },
+          "bootloader": {
+            "high_fuses": "0xdd",
+            "extended_fuses": "0x00",
+            "file": "atmega/ATmegaBOOT_168_diecimila.hex"
+          },
+          "build": {
+            "mcu": "atmega168"
+          }
+        }
+      }
+    }
+  },
+  "nano": {
+    "name": "Arduino Nano",
+    "upload": {
+      "tool": "avrdude",
+      "protocol": "arduino"
+    },
+    "bootloader": {
+      "tool": "avrdude",
+      "unlock_bits": "0x3F",
+      "lock_bits": "0x0F"
+    },
+    "build": {
+      "f_cpu": "16000000L",
+      "board": "AVR_NANO",
+      "core": "arduino",
+      "variant": "eightanaloginputs"
+    },
+    "menu": {
+      "cpu": {
+        "atmega328": {
+          "upload": {
+            "maximum_size": "30720",
+            "maximum_data_size": "2048",
+            "speed": "57600"
+          },
+          "bootloader": {
+            "low_fuses": "0xFF",
+            "high_fuses": "0xDA",
+            "extended_fuses": "0x05",
+            "file": "atmega/ATmegaBOOT_168_atmega328.hex"
+          },
+          "build": {
+            "mcu": "atmega328p"
+          }
+        },
+        "atmega168": {
+          "upload": {
+            "maximum_size": "14336",
+            "maximum_data_size": "1024",
+            "speed": "19200"
+          },
+          "bootloader": {
+            "low_fuses": "0xff",
+            "high_fuses": "0xdd",
+            "extended_fuses": "0x00",
+            "file": "atmega/ATmegaBOOT_168_diecimila.hex"
+          },
+          "build": {
+            "mcu": "atmega168"
+          }
+        }
+      }
+    }
+  },
+  "mega": {
+    "name": "Arduino Mega or Mega 2560",
+    "vid": [
+      "0x2341",
+      "0x2341",
+      "0x2A03",
+      "0x2A03"
+    ],
+    "pid": [
+      "0x0010",
+      "0x0042",
+      "0x0010",
+      "0x0042"
+    ],
+    "upload": {
+      "tool": "avrdude",
+      "maximum_data_size": "8192"
+    },
+    "bootloader": {
+      "tool": "avrdude",
+      "low_fuses": "0xFF",
+      "unlock_bits": "0x3F",
+      "lock_bits": "0x0F"
+    },
+    "build": {
+      "f_cpu": "16000000L",
+      "core": "arduino",
+      "variant": "mega",
+      "board": "AVR_MEGA2560"
+    },
+    "menu": {
+      "cpu": {
+        "atmega2560": {
+          "upload": {
+            "protocol": "wiring",
+            "maximum_size": "253952",
+            "speed": "115200"
+          },
+          "bootloader": {
+            "high_fuses": "0xD8",
+            "extended_fuses": "0xFD",
+            "file": "stk500v2/stk500boot_v2_mega2560.hex"
+          },
+          "build": {
+            "mcu": "atmega2560",
+            "board": "AVR_MEGA2560"
+          }
+        },
+        "atmega1280": {
+          "upload": {
+            "protocol": "arduino",
+            "maximum_size": "126976",
+            "speed": "57600"
+          },
+          "bootloader": {
+            "high_fuses": "0xDA",
+            "extended_fuses": "0xF5",
+            "file": "atmega/ATmegaBOOT_168_atmega1280.hex"
+          },
+          "build": {
+            "mcu": "atmega1280",
+            "board": "AVR_MEGA"
+          }
+        }
+      }
+    }
+  },
+  "megaADK": {
+    "name": "Arduino Mega ADK",
+    "vid": [
+      "0x2341",
+      "0x2341",
+      "0x2A03",
+      "0x2A03"
+    ],
+    "pid": [
+      "0x003f",
+      "0x0044",
+      "0x003f",
+      "0x0044"
+    ],
+    "upload": {
+      "tool": "avrdude",
+      "protocol": "wiring",
+      "maximum_size": "253952",
+      "maximum_data_size": "8192",
+      "speed": "115200"
+    },
+    "bootloader": {
+      "tool": "avrdude",
+      "low_fuses": "0xFF",
+      "high_fuses": "0xD8",
+      "extended_fuses": "0xFD",
+      "file": "stk500v2/stk500boot_v2_mega2560.hex",
+      "unlock_bits": "0x3F",
+      "lock_bits": "0x0F"
+    },
+    "build": {
+      "mcu": "atmega2560",
+      "f_cpu": "16000000L",
+      "board": "AVR_ADK",
+      "core": "arduino",
+      "variant": "mega"
+    },
+    "signature": "1e9801"
+  },
+  "leonardo": {
+    "name": "Arduino Leonardo",
+    "vid": [
+      "0x2341",
+      "0x2341",
+      "0x2A03",
+      "0x2A03"
+    ],
+    "pid": [
+      "0x0036",
+      "0x8036",
+      "0x0036",
+      "0x8036"
+    ],
+    "upload": {
+      "tool": "avrdude",
+      "protocol": "avr109",
+      "maximum_size": "28672",
+      "maximum_data_size": "2560",
+      "speed": "57600",
+      "disable_flushing": "true",
+      "use_1200bps_touch": "true",
+      "wait_for_upload_port": "true"
+    },
+    "bootloader": {
+      "tool": "avrdude",
+      "low_fuses": "0xff",
+      "high_fuses": "0xd8",
+      "extended_fuses": "0xcb",
+      "file": "caterina/Caterina-Leonardo.hex",
+      "unlock_bits": "0x3F",
+      "lock_bits": "0x2F"
+    },
+    "build": {
+      "mcu": "atmega32u4",
+      "f_cpu": "16000000L",
+      "vid": "0x2341",
+      "pid": "0x8036",
+      "usb_product": "\"Arduino Leonardo\"",
+      "board": "AVR_LEONARDO",
+      "core": "arduino",
+      "variant": "leonardo",
+      "extra_flags": "{build.usb_flags}"
+    },
+    "signature": "1e9587"
+  },
+  "micro": {
+    "name": "Arduino Micro",
+    "vid": [
+      "0x2341",
+      "0x2341",
+      "0x2A03",
+      "0x2A03"
+    ],
+    "pid": [
+      "0x0037",
+      "0x8037",
+      "0x0037",
+      "0x8037"
+    ],
+    "upload": {
+      "tool": "avrdude",
+      "protocol": "avr109",
+      "maximum_size": "28672",
+      "maximum_data_size": "2560",
+      "speed": "57600",
+      "disable_flushing": "true",
+      "use_1200bps_touch": "true",
+      "wait_for_upload_port": "true"
+    },
+    "bootloader": {
+      "tool": "avrdude",
+      "low_fuses": "0xff",
+      "high_fuses": "0xd8",
+      "extended_fuses": "0xcb",
+      "file": "caterina/Caterina-Micro.hex",
+      "unlock_bits": "0x3F",
+      "lock_bits": "0x2F"
+    },
+    "build": {
+      "mcu": "atmega32u4",
+      "f_cpu": "16000000L",
+      "vid": "0x2341",
+      "pid": "0x8037",
+      "usb_product": "\"Arduino Micro\"",
+      "board": "AVR_MICRO",
+      "core": "arduino",
+      "variant": "micro",
+      "extra_flags": "{build.usb_flags}"
+    },
+    "signature": "1e9587"
+  },
+  "esplora": {
+    "name": "Arduino Esplora",
+    "vid": [
+      "0x2341",
+      "0x2341",
+      "0x2A03",
+      "0x2A03"
+    ],
+    "pid": [
+      "0x003C",
+      "0x803C",
+      "0x003C",
+      "0x803C"
+    ],
+    "upload": {
+      "tool": "avrdude",
+      "protocol": "avr109",
+      "maximum_size": "28672",
+      "maximum_data_size": "2560",
+      "speed": "57600",
+      "disable_flushing": "true",
+      "use_1200bps_touch": "true",
+      "wait_for_upload_port": "true"
+    },
+    "bootloader": {
+      "tool": "avrdude",
+      "low_fuses": "0xff",
+      "high_fuses": "0xd8",
+      "extended_fuses": "0xcb",
+      "file": "caterina/Caterina-Esplora.hex",
+      "unlock_bits": "0x3F",
+      "lock_bits": "0x2F"
+    },
+    "build": {
+      "mcu": "atmega32u4",
+      "f_cpu": "16000000L",
+      "vid": "0x2341",
+      "pid": "0x803c",
+      "usb_product": "\"Arduino Esplora\"",
+      "board": "AVR_ESPLORA",
+      "core": "arduino",
+      "variant": "leonardo",
+      "extra_flags": "{build.usb_flags}"
+    },
+    "signature": "1e9587"
+  },
+  "mini": {
+    "name": "Arduino Mini",
+    "upload": {
+      "tool": "avrdude",
+      "protocol": "arduino"
+    },
+    "bootloader": {
+      "tool": "avrdude",
+      "low_fuses": "0xff",
+      "unlock_bits": "0x3F",
+      "lock_bits": "0x0F"
+    },
+    "build": {
+      "f_cpu": "16000000L",
+      "board": "AVR_MINI",
+      "core": "arduino",
+      "variant": "eightanaloginputs"
+    },
+    "menu": {
+      "cpu": {
+        "atmega328": {
+          "upload": {
+            "maximum_size": "28672",
+            "maximum_data_size": "2048",
+            "speed": "115200"
+          },
+          "bootloader": {
+            "high_fuses": "0xd8",
+            "extended_fuses": "0x05",
+            "file": "optiboot/optiboot_atmega328-Mini.hex"
+          },
+          "build": {
+            "mcu": "atmega328p"
+          }
+        },
+        "atmega168": {
+          "upload": {
+            "maximum_size": "14336",
+            "maximum_data_size": "1024",
+            "speed": "19200"
+          },
+          "bootloader": {
+            "high_fuses": "0xdd",
+            "extended_fuses": "0x00",
+            "file": "atmega/ATmegaBOOT_168_ng.hex"
+          },
+          "build": {
+            "mcu": "atmega168"
+          }
+        }
+      }
+    }
+  },
+  "ethernet": {
+    "name": "Arduino Ethernet",
+    "upload": {
+      "tool": "avrdude",
+      "protocol": "arduino",
+      "maximum_size": "32256",
+      "maximum_data_size": "2048",
+      "speed": "115200"
+    },
+    "bootloader": {
+      "tool": "avrdude",
+      "low_fuses": "0xff",
+      "high_fuses": "0xde",
+      "extended_fuses": "0x05",
+      "file": "optiboot/optiboot_atmega328.hex",
+      "unlock_bits": "0x3F",
+      "lock_bits": "0x0F"
+    },
+    "build": {
+      "variant": "ethernet",
+      "mcu": "atmega328p",
+      "f_cpu": "16000000L",
+      "board": "AVR_ETHERNET",
+      "core": "arduino"
+    },
+    "signature": "1e950f"
+  },
+  "fio": {
+    "name": "Arduino Fio",
+    "upload": {
+      "tool": "avrdude",
+      "protocol": "arduino",
+      "maximum_size": "30720",
+      "maximum_data_size": "2048",
+      "speed": "57600"
+    },
+    "bootloader": {
+      "tool": "avrdude",
+      "low_fuses": "0xFF",
+      "high_fuses": "0xDA",
+      "extended_fuses": "0x05",
+      "file": "atmega/ATmegaBOOT_168_atmega328_pro_8MHz.hex",
+      "unlock_bits": "0x3F",
+      "lock_bits": "0x0F"
+    },
+    "build": {
+      "mcu": "atmega328p",
+      "f_cpu": "8000000L",
+      "board": "AVR_FIO",
+      "core": "arduino",
+      "variant": "eightanaloginputs"
+    },
+    "signature": "1e950f"
+  },
+  "bt": {
+    "name": "Arduino BT",
+    "upload": {
+      "tool": "avrdude",
+      "protocol": "arduino",
+      "speed": "19200",
+      "disable_flushing": "true"
+    },
+    "bootloader": {
+      "tool": "avrdude",
+      "low_fuses": "0xff",
+      "unlock_bits": "0x3F",
+      "lock_bits": "0x0F"
+    },
+    "build": {
+      "f_cpu": "16000000L",
+      "board": "AVR_BT",
+      "core": "arduino",
+      "variant": "eightanaloginputs"
+    },
+    "menu": {
+      "cpu": {
+        "atmega328": {
+          "upload": {
+            "maximum_size": "28672",
+            "maximum_data_size": "2048"
+          },
+          "bootloader": {
+            "high_fuses": "0xd8",
+            "extended_fuses": "0x05",
+            "file": "bt/ATmegaBOOT_168_atmega328_bt.hex"
+          },
+          "build": {
+            "mcu": "atmega328p"
+          }
+        },
+        "atmega168": {
+          "upload": {
+            "maximum_size": "14336",
+            "maximum_data_size": "1024"
+          },
+          "bootloader": {
+            "high_fuses": "0xdd",
+            "extended_fuses": "0x00",
+            "file": "bt/ATmegaBOOT_168.hex"
+          },
+          "build": {
+            "mcu": "atmega168"
+          }
+        }
+      }
+    }
+  },
+  "LilyPadUSB": {
+    "name": "LilyPad Arduino USB",
+    "vid": [
+      "0x1B4F",
+      "0x1B4F"
+    ],
+    "pid": [
+      "0x9207",
+      "0x9208"
+    ],
+    "upload": {
+      "tool": "avrdude",
+      "protocol": "avr109",
+      "maximum_size": "28672",
+      "maximum_data_size": "2560",
+      "speed": "57600",
+      "disable_flushing": "true",
+      "use_1200bps_touch": "true",
+      "wait_for_upload_port": "true"
+    },
+    "bootloader": {
+      "tool": "avrdude",
+      "low_fuses": "0xff",
+      "high_fuses": "0xd8",
+      "extended_fuses": "0xce",
+      "file": "caterina-LilyPadUSB/Caterina-LilyPadUSB.hex",
+      "unlock_bits": "0x3F",
+      "lock_bits": "0x2F"
+    },
+    "build": {
+      "mcu": "atmega32u4",
+      "f_cpu": "8000000L",
+      "vid": "0x1B4F",
+      "pid": "0x9208",
+      "usb_product": "\"LilyPad USB\"",
+      "board": "AVR_LILYPAD_USB",
+      "core": "arduino",
+      "variant": "leonardo",
+      "extra_flags": "{build.usb_flags}"
+    },
+    "signature": "1e9587"
+  },
+  "lilypad": {
+    "name": "LilyPad Arduino",
+    "upload": {
+      "tool": "avrdude",
+      "protocol": "arduino"
+    },
+    "bootloader": {
+      "tool": "avrdude",
+      "unlock_bits": "0x3F",
+      "lock_bits": "0x0F"
+    },
+    "build": {
+      "f_cpu": "8000000L",
+      "board": "AVR_LILYPAD",
+      "core": "arduino",
+      "variant": "standard"
+    },
+    "menu": {
+      "cpu": {
+        "atmega328": {
+          "upload": {
+            "maximum_size": "30720",
+            "maximum_data_size": "2048",
+            "speed": "57600"
+          },
+          "bootloader": {
+            "low_fuses": "0xFF",
+            "high_fuses": "0xDA",
+            "extended_fuses": "0x05",
+            "file": "atmega/ATmegaBOOT_168_atmega328_pro_8MHz.hex"
+          },
+          "build": {
+            "mcu": "atmega328p"
+          }
+        },
+        "atmega168": {
+          "upload": {
+            "maximum_size": "14336",
+            "maximum_data_size": "1024",
+            "speed": "19200"
+          },
+          "bootloader": {
+            "low_fuses": "0xe2",
+            "high_fuses": "0xdd",
+            "extended_fuses": "0x00",
+            "file": "lilypad/LilyPadBOOT_168.hex"
+          },
+          "build": {
+            "mcu": "atmega168"
+          }
+        }
+      }
+    }
+  },
+  "pro": {
+    "name": "Arduino Pro or Pro Mini",
+    "upload": {
+      "tool": "avrdude",
+      "protocol": "arduino"
+    },
+    "bootloader": {
+      "tool": "avrdude",
+      "unlock_bits": "0x3F",
+      "lock_bits": "0x0F"
+    },
+    "build": {
+      "board": "AVR_PRO",
+      "core": "arduino",
+      "variant": "eightanaloginputs"
+    },
+    "menu": {
+      "cpu": {
+        "16MHzatmega328": {
+          "upload": {
+            "maximum_size": "30720",
+            "maximum_data_size": "2048",
+            "speed": "57600"
+          },
+          "bootloader": {
+            "low_fuses": "0xFF",
+            "high_fuses": "0xDA",
+            "extended_fuses": "0x05",
+            "file": "atmega/ATmegaBOOT_168_atmega328.hex"
+          },
+          "build": {
+            "mcu": "atmega328p",
+            "f_cpu": "16000000L"
+          }
+        },
+        "8MHzatmega328": {
+          "upload": {
+            "maximum_size": "30720",
+            "maximum_data_size": "2048",
+            "speed": "57600"
+          },
+          "bootloader": {
+            "low_fuses": "0xFF",
+            "high_fuses": "0xDA",
+            "extended_fuses": "0x05",
+            "file": "atmega/ATmegaBOOT_168_atmega328_pro_8MHz.hex"
+          },
+          "build": {
+            "mcu": "atmega328p",
+            "f_cpu": "8000000L"
+          }
+        },
+        "16MHzatmega168": {
+          "upload": {
+            "maximum_size": "14336",
+            "maximum_data_size": "1024",
+            "speed": "19200"
+          },
+          "bootloader": {
+            "low_fuses": "0xff",
+            "high_fuses": "0xdd",
+            "extended_fuses": "0x00",
+            "file": "atmega/ATmegaBOOT_168_diecimila.hex"
+          },
+          "build": {
+            "mcu": "atmega168",
+            "f_cpu": "16000000L"
+          }
+        },
+        "8MHzatmega168": {
+          "upload": {
+            "maximum_size": "14336",
+            "maximum_data_size": "1024",
+            "speed": "19200"
+          },
+          "bootloader": {
+            "low_fuses": "0xc6",
+            "high_fuses": "0xdd",
+            "extended_fuses": "0x00",
+            "file": "atmega/ATmegaBOOT_168_pro_8MHz.hex"
+          },
+          "build": {
+            "mcu": "atmega168",
+            "f_cpu": "8000000L"
+          }
+        }
+      }
+    }
+  },
+  "atmegang": {
+    "name": "Arduino NG or older",
+    "upload": {
+      "tool": "avrdude",
+      "protocol": "arduino",
+      "speed": "19200"
+    },
+    "bootloader": {
+      "tool": "avrdude",
+      "unlock_bits": "0x3F",
+      "lock_bits": "0x0F"
+    },
+    "build": {
+      "mcu": "atmegang",
+      "f_cpu": "16000000L",
+      "board": "AVR_NG",
+      "core": "arduino",
+      "variant": "standard"
+    },
+    "menu": {
+      "cpu": {
+        "atmega168": {
+          "upload": {
+            "maximum_size": "14336",
+            "maximum_data_size": "1024"
+          },
+          "bootloader": {
+            "low_fuses": "0xff",
+            "high_fuses": "0xdd",
+            "extended_fuses": "0x00",
+            "file": "atmega/ATmegaBOOT_168_ng.hex"
+          },
+          "build": {
+            "mcu": "atmega168"
+          }
+        },
+        "atmega8": {
+          "upload": {
+            "maximum_size": "7168",
+            "maximum_data_size": "1024"
+          },
+          "bootloader": {
+            "low_fuses": "0xdf",
+            "high_fuses": "0xca",
+            "file": "atmega8/ATmegaBOOT-prod-firmware-2009-11-07.hex"
+          },
+          "build": {
+            "mcu": "atmega8"
+          }
+        }
+      }
+    }
+  },
+  "robotControl": {
+    "name": "Arduino Robot Control",
+    "vid": [
+      "0x2341",
+      "0x2341",
+      "0x2A03",
+      "0x2A03"
+    ],
+    "pid": [
+      "0x0038",
+      "0x8038",
+      "0x0038",
+      "0x8038"
+    ],
+    "upload": {
+      "tool": "avrdude",
+      "protocol": "avr109",
+      "maximum_size": "28672",
+      "maximum_data_size": "2560",
+      "speed": "57600",
+      "disable_flushing": "true",
+      "use_1200bps_touch": "true",
+      "wait_for_upload_port": "true"
+    },
+    "bootloader": {
+      "tool": "avrdude",
+      "low_fuses": "0xff",
+      "high_fuses": "0xd8",
+      "extended_fuses": "0xcb",
+      "file": "caterina-Arduino_Robot/Caterina-Robot-Control.hex",
+      "unlock_bits": "0x3F",
+      "lock_bits": "0x2F"
+    },
+    "build": {
+      "mcu": "atmega32u4",
+      "f_cpu": "16000000L",
+      "vid": "0x2341",
+      "pid": "0x8038",
+      "usb_product": "\"Robot Control\"",
+      "board": "AVR_ROBOT_CONTROL",
+      "core": "arduino",
+      "variant": "robot_control",
+      "extra_flags": "{build.usb_flags}"
+    },
+    "signature": "1e9587"
+  },
+  "robotMotor": {
+    "name": "Arduino Robot Motor",
+    "vid": [
+      "0x2341",
+      "0x2341",
+      "0x2A03",
+      "0x2A03"
+    ],
+    "pid": [
+      "0x0039",
+      "0x8039",
+      "0x0039",
+      "0x8039"
+    ],
+    "upload": {
+      "tool": "avrdude",
+      "protocol": "avr109",
+      "maximum_size": "28672",
+      "maximum_data_size": "2560",
+      "speed": "57600",
+      "disable_flushing": "true",
+      "use_1200bps_touch": "true",
+      "wait_for_upload_port": "true"
+    },
+    "bootloader": {
+      "tool": "avrdude",
+      "low_fuses": "0xff",
+      "high_fuses": "0xd8",
+      "extended_fuses": "0xcb",
+      "file": "caterina-Arduino_Robot/Caterina-Robot-Motor.hex",
+      "unlock_bits": "0x3F",
+      "lock_bits": "0x2F"
+    },
+    "build": {
+      "mcu": "atmega32u4",
+      "f_cpu": "16000000L",
+      "vid": "0x2341",
+      "pid": "0x8039",
+      "usb_product": "\"Robot Motor\"",
+      "board": "AVR_ROBOT_MOTOR",
+      "core": "arduino",
+      "variant": "robot_motor",
+      "extra_flags": "{build.usb_flags}"
+    },
+    "signature": "1e9587"
+  },
+  "gemma": {
+    "vid": [
+      "0x2341"
+    ],
+    "pid": [
+      "0x0c9f"
+    ],
+    "name": "Arduino Gemma",
+    "bootloader": {
+      "low_fuses": "0xF1",
+      "high_fuses": "0xD5",
+      "extended_fuses": "0xFE",
+      "tool": "avrdude",
+      "lock_bits": "",
+      "unlock_bits": "",
+      "file": "gemma/gemma_v1.hex"
+    },
+    "build": {
+      "mcu": "attiny85",
+      "f_cpu": "8000000L",
+      "core": "arduino",
+      "variant": "gemma",
+      "board": "AVR_GEMMA"
+    },
+    "upload": {
+      "tool": "avrdude",
+      "maximum_size": "5310"
+    }
+  }
+}
