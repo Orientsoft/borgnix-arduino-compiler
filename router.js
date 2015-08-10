@@ -14,7 +14,7 @@ var compiler
 
 router.post('/compile', function (req, res) {
   // console.log(req.body)
-  var sketch = bpm.findProject(req.body.uuid, req.body.type, req.body.name)
+  var sketch = bpm.findProject(req.session.user.uid, req.body.type, req.body.name)
   // console.log(sketch)
   if (!sketch)
     return res.json({status: 1, content: 'sketch not found'})
@@ -33,7 +33,7 @@ router.get('/boards', function (req, res) {
 })
 
 router.get('/hex/:filename', function (req, res) {
-  var sketch = bpm.findProject(req.query.uuid, req.query.type, req.query.name)
+  var sketch = bpm.findProject(req.session.user.uid, req.query.type, req.query.name)
     , hexFile = path.join(sketch.dir, 'build-'+(req.query.board || 'uno'), req.params.filename)
   if (fs.existsSync(hexFile)) {
     // res.json('yes')
@@ -45,7 +45,7 @@ router.get('/hex/:filename', function (req, res) {
 })
 
 router.get('/findhex', function (req, res) {
-  var sketch = bpm.findProject(req.query.uuid, req.query.type, req.query.name)
+  var sketch = bpm.findProject(req.session.user.uid, req.query.type, req.query.name)
     , hexFile = path.join(sketch.dir, 'build-'+(req.query.board || 'uno'), sketch.name+'.hex')
   if (fs.existsSync(hexFile)) {
     res.json('yes')
@@ -56,11 +56,10 @@ router.get('/findhex', function (req, res) {
 })
 
 router.post('/upload-zip-lib', function (req, res) {
-  console.log(req.query.uuid, req.query.token)
   _.map(req.files, function (file, key) {
     // console.log(file)
     if (file.extension !== 'zip') return null
-    var outPath = path.join(bpm.root, req.query.uuid, 'arduino/libraries'
+    var outPath = path.join(bpm.root, req.session.user.uid, 'arduino/libraries'
                            , path.basename( file.originalname
                                           , '.'+file.extension))
     fs.createReadStream(file.path)
@@ -70,7 +69,7 @@ router.post('/upload-zip-lib', function (req, res) {
 })
 
 router.get('/libs', function (req, res) {
-  var userLibPath = path.join(bpm.root, req.query.uuid, 'arduino/libraries')
+  var userLibPath = path.join(bpm.root, req.session.user.uid, 'arduino/libraries')
     , ideLibPath = path.join(compiler.arduinoDir, 'libraries')
     , avrLibPath = path.join(compiler.arduinoDir, 'hardware/arduino/avr/libraries')
 
