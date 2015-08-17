@@ -45,7 +45,7 @@ router.get('/hex/:filename', function (req, res) {
 })
 
 router.get('/findhex', function (req, res) {
-  var sketch = bpm.findProject(req.session.user.uid, req.query.type, req.query.name)
+  var sketch = bpm.findProject(req.session.user.uid, 'arduino', req.query.name)
     , hexFile = path.join(sketch.dir, 'build-'+(req.query.board || 'uno'), sketch.name+'.hex')
   if (fs.existsSync(hexFile)) {
     res.json('yes')
