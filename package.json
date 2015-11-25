@@ -19,5 +19,11 @@
     "underscore": "^1.8.3",
     "unzip": "^0.1.11",
     "walk": "^2.3.9"
+  },
+  "devDependencies": {
+    "babel-core": "^6.2.1",
+    "babel-preset-stage-0": "^6.1.18",
+    "gulp": "^3.9.0",
+    "gulp-babel": "^6.1.0"
   }
 }

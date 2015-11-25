@@ -1,7 +1,7 @@
 var fs = require('fs-extra')
   , path = require('path')
   , format = require('string-template')
-  , butil = require('./lib/util')
+  , butil = require('./util')
 
 function ArduinoCompiler (config) {
   if (config.arduinoDir)

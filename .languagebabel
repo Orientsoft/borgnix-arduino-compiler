@@ -1,0 +1,12 @@
+{
+  "babelSourcePath":                  "src",
+  "babelTranspilePath":               "lib",
+  "createMap":                        false,
+  "createTargetDirectories":          true,
+  "createTranspiledCode":             true,
+  "disableWhenNoBabelrcFileInPath":   true,
+  "projectRoot":                      true,
+  "suppressSourcePathMessages":       false,
+  "suppressTranspileOnSaveMessages":  true,
+  "transpileOnSave":                  true
+}
