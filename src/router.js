@@ -1,7 +1,6 @@
 var router = require('express').Router()
   , ArduinoCompiler = require('./make')
   , ProjectManager = require('borgnix-project-manager/lib/project-manager')
-  , NedbStore = require('borgnix-project-manager/lib/store/nedb')
   , path = require('path')
   // , boards = require('./lib/board')
   , fs = require('fs-extra')
@@ -71,12 +70,11 @@ router.post('/upload-zip-lib', function(req, res) {
     var outPath = path.join(
       pm.root, req.session.user.uid
     , 'arduino/libraries'
-    , path.basename(file.originalname, '.' + file.extension)
+    , path.basename(file.originalname, '.zip')
     )
-    fs.createReadStream(file.path)
-      .pipe(unzip.Extract({
-        path: outPath
-      }))
+    fs.createReadStream(file.path).pipe(unzip.Extract({
+      path: outPath
+    }))
   })
   res.json({
     status: 0
@@ -174,7 +172,6 @@ module.exports = function(config) {
   else
     throw new Error('config.arduinoLibs is missing')
 
-  // var store = new NedbStore(path.join(config.projectRoot, '../nedb/projects'))
   pm = new ProjectManager({
     projectDir: config.projectRoot
   , tplDir: path.join(__dirname, '../project-tpl')

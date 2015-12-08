@@ -5,6 +5,7 @@ import mqtt from 'mqtt'
 import stk500 from 'stk500'
 import intelHex from 'intel-hex'
 import _ from 'lodash'
+import $ from 'jquery'
 
 var board = 'uno'
   , name = 't2'
@@ -104,17 +105,44 @@ let uploadHex = async function (msp, hexFile, board) {
   console.log('UPLOAD FINISH')
 }
 
-class Client {
+const endpoints = {
+  compile: '/compile'
+, listLibs: '/libs'
+, uploadZipLib: '/upload-zip-lib'
+, getHex: '/hex'
+, findHex: '/findhex'
+, getBoards: '/boards'
+}
+
+export default class Client {
   constructor(opts) {
-    this.host = opts.host
+    this.host = opts.host || ''
+    this.prefix = opts.prefix || ''
+
+  }
+
+  _url(action) {
+    return this.host + this.prefix + endpoints[action]
+  }
+
+  _jsonReq(method, name, opts) {
+    return $.ajax({
+      url: this._url(name)
+    , method: method
+    , data: JSON.stringify(opts)
+    , contentType: 'application/json'
+    })
   }
 
   compile(opts) {
-
+    this._jsonReq('POST', 'compile', opts)
   }
 
   listLibs(opts) {
-
+    return $.get({
+      url: this._url('listLibs')
+    , data: opts
+    })
   }
 
   getBoards(opts) {
@@ -122,12 +150,22 @@ class Client {
   }
 
   uploadZipLib(opts) {
-
+    return $.ajax({
+      url: this._url('uploadZipLib'),
+      type: 'POST',
+      data: opts.data,
+      cache: false,
+      dataType: 'json',
+      processData: false,
+      contentType: false,
+      // success: cb,
+      error: (jqXHR, textStatus, errorThrown) => {
+        console.log('ERRORS: ' + textStatus)
+      }
+    })
   }
 
   uploadHex(opts) {
     return uploadHex(opts.port, opts.hex, opts.board)
   }
 }
-
-export default Client
