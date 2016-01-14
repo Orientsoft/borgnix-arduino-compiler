@@ -68,7 +68,7 @@ router.post('/upload-zip-lib', function(req, res) {
     // console.log(file)
     if (file.extension !== 'zip') return null
     var outPath = path.join(
-      pm.root, req.session.user.uid
+      pm.projectDir, req.session.user.uid
     , 'arduino/libraries'
     , path.basename(file.originalname, '.zip')
     )
@@ -83,10 +83,10 @@ router.post('/upload-zip-lib', function(req, res) {
 
 router.get('/libs', function(req, res) {
   console.log(pm)
-  console.log(pm.root)
+  console.log(pm.projectDir)
   console.log(req.session.user.uid)
 
-  var userLibPath = path.join( pm.root, req.session.user.uid
+  var userLibPath = path.join( pm.projectDir, req.session.user.uid
                              , 'arduino/libraries')
   console.log(userLibPath)
   var ideLibPath = path.join(compiler.arduinoDir, 'libraries')
