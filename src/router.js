@@ -82,6 +82,9 @@ router.post('/upload-zip-lib', function(req, res) {
 })
 
 router.get('/libs', function(req, res) {
+  console.log(pm.root)
+  console.log(req.session.user.uid)
+
   var userLibPath = path.join( pm.root, req.session.user.uid
                              , 'arduino/libraries')
   console.log(userLibPath)
