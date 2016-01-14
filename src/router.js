@@ -84,9 +84,12 @@ router.post('/upload-zip-lib', function(req, res) {
 router.get('/libs', function(req, res) {
   var userLibPath = path.join( pm.root, req.session.user.uid
                              , 'arduino/libraries')
-    , ideLibPath = path.join(compiler.arduinoDir, 'libraries')
-    , avrLibPath = path.join( compiler.arduinoDir
+  console.log(userLibPath)
+  var ideLibPath = path.join(compiler.arduinoDir, 'libraries')
+  console.log(ideLibPath)
+  var avrLibPath = path.join( compiler.arduinoDir
                             , 'hardware/arduino/avr/libraries')
+  console.log(avrLibPath)
 
   try {
     var userLibs = getLibs(userLibPath, 'user')
