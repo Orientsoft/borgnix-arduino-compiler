@@ -139,7 +139,7 @@ export default class Client {
   }
 
   listLibs(opts) {
-    return $.get({
+    return $.ajax({
       url: this._url('listLibs')
     , data: opts
     })
