@@ -139,7 +139,6 @@ function getLibs(libPath, type) {
           if (path.relative(fullPath, root).indexOf('example') != -1)
             return next()
           if (path.extname(stat.name) === '.h') {
-            console.log(path.relative(fullPath, root), stat.name)
             var header = path.join(path.relative(fullPath, root), stat.name)
             if (header.indexOf('src/') === 0)
               header = header.slice(4)
