@@ -22,7 +22,7 @@ class ArduinoCompiler {
     var libDir = path.join(sketchbook, 'libraries')
     if (fs.existsSync(libDir)) return null
 
-    fs.mkdirSync(libDir)
+    fs.mkdirpSync(libDir)
     for (var lib of fs.readdirSync(this.arduinoLibs))
       fs.symlinkSync(path.join(libDir, lib), path.join(this.arduinoLibs, lib))
     butil.call(cb)
