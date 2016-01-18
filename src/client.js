@@ -142,7 +142,10 @@ export default class Client {
     return $.ajax({
       url: this._url('listLibs')
     , data: opts
-    })
+    , completed: function(res) {
+      console.log(res)
+    }
+     })
   }
 
   getBoards(opts) {
