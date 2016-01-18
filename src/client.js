@@ -138,15 +138,11 @@ export default class Client {
     this._jsonReq('POST', 'compile', opts)
   }
 
-  listLibs(opts) {
-    return $.ajax({
+  listLibs(opts, callback) {
+    return $.get({
       url: this._url('listLibs')
-    , method: 'GET'
     , data: opts
-    , complete: function(res) {
-      console.log(res)
-    }
-     })
+    }).done(callback)
   }
 
   getBoards(opts) {
