@@ -82,10 +82,6 @@ router.post('/upload-zip-lib', function(req, res) {
 })
 
 router.get('/libs', function(req, res) {
-  console.log(pm)
-  console.log(pm.projectDir)
-  console.log(req.session.user.uid)
-
   var userLibPath = path.join( pm.projectDir, req.session.user.uid
                              , 'arduino/libraries')
   console.log(userLibPath)
@@ -143,6 +139,7 @@ function getLibs(libPath, type) {
           if (path.relative(fullPath, root).indexOf('example') != -1)
             return next()
           if (path.extname(stat.name) === '.h') {
+            console.log(path.relative(fullPath, root), stat.name)
             var header = path.join(path.relative(fullPath, root), stat.name)
             if (header.indexOf('src/') === 0)
               header = header.slice(4)
