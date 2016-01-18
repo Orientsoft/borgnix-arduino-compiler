@@ -143,7 +143,7 @@ export default class Client {
       url: this._url('listLibs')
     , method: 'GET'
     , data: opts
-    , completed: function(res) {
+    , complete: function(res) {
       console.log(res)
     }
      })
