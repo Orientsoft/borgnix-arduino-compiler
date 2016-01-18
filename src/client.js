@@ -141,6 +141,7 @@ export default class Client {
   listLibs(opts) {
     return $.ajax({
       url: this._url('listLibs')
+    , method: 'GET'
     , data: opts
     , completed: function(res) {
       console.log(res)
