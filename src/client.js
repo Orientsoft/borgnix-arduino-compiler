@@ -135,6 +135,7 @@ export default class Client {
   }
 
   compile(opts) {
+    console.log('src.compile')
     this._jsonReq('POST', 'compile', opts)
   }
 

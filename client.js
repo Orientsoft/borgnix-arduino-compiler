@@ -40,6 +40,7 @@ Client.prototype.getBoards = function (cb) {
 }
 
 Client.prototype.compile = function (opt, cb) {
+  console.log('compiler.compile')
   $.ajax({
     url: this.url('compile')
   , method: 'POST'
