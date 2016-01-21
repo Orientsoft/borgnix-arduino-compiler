@@ -112,13 +112,13 @@ const endpoints = {
 , getHex: '/hex'
 , findHex: '/findhex'
 , getBoards: '/boards'
+, uploadHex: '/uploadHex'
 }
 
 export default class Client {
   constructor(opts) {
     this.host = opts.host || ''
     this.prefix = opts.prefix || ''
-
   }
 
   _url(action) {
