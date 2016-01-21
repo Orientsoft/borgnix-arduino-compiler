@@ -11,15 +11,18 @@ var router = require('express').Router()
 var compiler, pm, boards = require('../data/boards.json')
 
 router.post('/compile', async function(req, res) {
-  // console.log(req.body)
+  console.log(req.body)
   var info = {
     owner: req.session.user.uid
   , type: req.body.type
   , name: req.body.name
   }
+  console.log(info)
   try {
     var sketch = await pm.findProject(info)
+    console.log(sketch)
     compiler.compile(sketch, req.body.board, function(err, stdout, stderr) {
+      console.log('compile')
       var memoryUsage = stdout.slice(stdout.lastIndexOf('AVR Memory Usage'))
       res.json({
         status: err ? 1 : 0
@@ -31,6 +34,7 @@ router.post('/compile', async function(req, res) {
       })
     })
   } catch (e) {
+    console.log(e)
     res.json({status: 1, content: e.toString()})
   }
 })
